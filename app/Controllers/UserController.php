@@ -12,7 +12,7 @@ class UserController extends BaseApiController
         helper('api_response');
 
         $model = new UserModel();
-        $users = $model->select('users.id, users.name, users.email, users.is_active, users.created_at, roles.name as role')
+        $users = $model->select('users.id, users.name, users.email, users.role_id, users.is_active, users.created_at, roles.name as role')
             ->join('roles', 'roles.id = users.role_id', 'left')
             ->where('users.deleted_at', null)
             ->orderBy('users.id', 'DESC')

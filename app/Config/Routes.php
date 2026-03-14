@@ -38,5 +38,15 @@ $routes->group('api', ['namespace' => 'App\\Controllers', 'filter' => 'apicors']
         $routes->post('users', 'UserController::create', ['filter' => 'permission:manage_users']);
         $routes->put('users/(:num)', 'UserController::update/$1', ['filter' => 'permission:manage_users']);
         $routes->delete('users/(:num)', 'UserController::delete/$1', ['filter' => 'permission:manage_users']);
+
+        $routes->get('roles', 'RoleController::index', ['filter' => 'permission:manage_users']);
+
+        $routes->get('admin/notes', 'AdminNoteController::index', ['filter' => 'permission:manage_users']);
+        $routes->post('admin/notes', 'AdminNoteController::create', ['filter' => 'permission:manage_users']);
+        $routes->put('admin/notes/(:num)', 'AdminNoteController::update/$1', ['filter' => 'permission:manage_users']);
+        $routes->delete('admin/notes/(:num)', 'AdminNoteController::delete/$1', ['filter' => 'permission:manage_users']);
+
+        $routes->get('admin/drive', 'AdminDriveController::index', ['filter' => 'permission:manage_users']);
+        $routes->post('admin/drive', 'AdminDriveController::upload', ['filter' => 'permission:manage_users']);
     });
 });
